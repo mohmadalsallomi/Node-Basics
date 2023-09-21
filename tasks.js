@@ -39,13 +39,13 @@ function onDataReceived(text) {
   const command = parts[0]
   const argument = parts.slice(1).join(' ')
 
-  if (command === 'quit\n' || command === 'exit\n' ) {
+  if (command === 'quit' || command === 'exit' ) {
     quit();
   }
   else if(command === 'hello'){
     hello(argument);
   }
-  else if(command === 'help\n'){   //here i add help like step of (hello)
+  else if(command === 'help'){   //here i add help like step of (hello)
     help();
   }
   else{
