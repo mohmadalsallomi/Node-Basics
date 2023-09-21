@@ -34,17 +34,11 @@ function startApp(name){
  * @returns {void}
  */
 function onDataReceived(text) {
-  const input = text.trim()
-  const parts = input.split(' ')
-  const command = parts[0]
-  const argument = parts.slice(1).join(' ')
-
-
   if (text === 'quit\n' || text === 'exit\n' ) {
     quit();
   }
-  else if(command === 'hello\n'){
-    hello(argument);
+  else if(text.startsWith('hello ')){
+    hello(text);
   }
   else if(text === 'help\n'){   //here i add help like step of (hello)
     help();
@@ -72,15 +66,12 @@ function unknownCommand(c){
  *
  * @returns {void}
  */
-function hello(x){
-  if (x) {
-    console.log (`hello ${x}!`)
-  }
-  else{console.log('hello!')}
-
-
+function hello(text){
+  text = text.replace('/n','').trim();
+  const parts = text.split(' ');
+  const name = parts.slice(1).join(' ');
+    console.log (`hello ${name}!`)
 }
-
 
 /**
  * Exits the application
